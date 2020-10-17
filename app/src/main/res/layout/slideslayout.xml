@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/slider_image"
+        android:layout_width="387dp"
+        android:layout_height="361dp"
+        android:padding="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/slider_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:text="@string/first_slide_title"
+        android:textColor="#000"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider_image" />
+
+    <TextView
+        android:id="@+id/slider_desc"
+        android:layout_width="347dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="214dp"
+        android:gravity="center"
+        android:textColor="#000"
+        android:justificationMode="inter_word"
+        android:padding="5dp"
+        android:text="@string/first_slide_desc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.390"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/slider_heading" />
+</androidx.constraintlayout.widget.ConstraintLayout>

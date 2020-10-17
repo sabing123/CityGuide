@@ -63,6 +63,9 @@ public class OnBoardingActivity extends AppCompatActivity {
 
             addDots(position);
 
+
+//            asahsahgsa
+
         }
 
         @Override

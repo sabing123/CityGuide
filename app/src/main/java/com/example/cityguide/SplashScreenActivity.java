@@ -1,6 +1,7 @@
 package com.example.cityguide;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -15,6 +16,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
     //animation
     Animation sideAnim;
+    SharedPreferences onBoardingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +36,26 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent  = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
-            startActivity(intent);
-            finish();
+
+                onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
+                boolean isFirstTime = onBoardingScreen.getBoolean("FirstTime",true);
+
+                if (isFirstTime){
+
+                    SharedPreferences.Editor editor = onBoardingScreen.edit();
+                    editor.putBoolean("FirstTime", false);
+                    editor.commit();
+
+                    Intent intent  = new Intent(SplashScreenActivity.this, OnBoardingActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+                else {
+                    Intent intent  = new Intent(SplashScreenActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         },5000);
 

@@ -1,7 +1,16 @@
 package com.example.cityguide;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,15 +26,21 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     SliderAdapter sliderAdapter;
     TextView[] dots;
+    Button letsGetStarted,skip_btn;
+    Animation animation;
+    int currentPos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_on_boarding);
 
         //binding
         viewPager = findViewById(R.id.slider);
         dotsLayout = findViewById(R.id.dots);
+        letsGetStarted = findViewById(R.id.get_started_btn);
+        skip_btn = findViewById(R.id.skip_btn);
 
         //call adapter
         sliderAdapter = new SliderAdapter(this);
@@ -35,18 +50,27 @@ public class OnBoardingActivity extends AppCompatActivity {
 
     }
 
-    private void addDots( int position) {
+    public void skip(View view){
+        Intent i = new Intent(OnBoardingActivity.this, MainActivity.class);
+        startActivity(i);
+        finish();
+    }
+    public void next(View view){
+        viewPager.setCurrentItem(currentPos + 1);
+    }
+
+    private void addDots(int position) {
 
         dots = new TextView[4];
-       dotsLayout.removeAllViews();
+        dotsLayout.removeAllViews();
 
-        for (int i =0; i<dots.length; i++){
+        for (int i = 0; i < dots.length; i++) {
             dots[i] = new TextView(this);
             dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);
             dotsLayout.addView(dots[i]);
         }
-        if (dots.length>0){
+        if (dots.length > 0) {
             dots[position].setTextColor(getResources().getColor(R.color.colorPrimary));
         }
 
@@ -60,11 +84,38 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-
             addDots(position);
 
+            currentPos = position;
+            if (position == 0){
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                skip_btn.setVisibility(View.VISIBLE);
+            }
+            else if(position == 1){
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                skip_btn.setVisibility(View.VISIBLE);
+            }
+            else if(position == 2){
+                letsGetStarted.setVisibility(View.INVISIBLE);
+                skip_btn.setVisibility(View.VISIBLE);
+            }
+            else{
+                animation = AnimationUtils.loadAnimation(OnBoardingActivity.this,R.anim.bottom_anim);
+                letsGetStarted.setAnimation(animation);
+                letsGetStarted.setVisibility(View.VISIBLE);
 
-//            asahsahgsa
+                Animation fadeOut = new AlphaAnimation(1, 0);
+                fadeOut.setInterpolator(new AccelerateInterpolator()); //and this
+                fadeOut.setStartOffset(1000);
+                fadeOut.setDuration(1000);
+
+                AnimationSet skipAnimation = new AnimationSet(false);
+                skipAnimation.addAnimation(fadeOut);
+                skip_btn.setAnimation(skipAnimation);
+
+                skip_btn.setVisibility(View.INVISIBLE);
+            }
+
 
         }
 

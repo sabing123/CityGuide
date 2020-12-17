@@ -30,6 +30,7 @@
             android:padding="10dp"
             app:ccp_countryPreference="NP"
             app:ccp_defaultNameCode="NP"
+            app:ccp_showFullName="true"
             app:ccp_arrowSize="26sp"
             app:ccp_hideNameCode="true"
             app:ccp_backgroundColor="@color/colorPrimary"

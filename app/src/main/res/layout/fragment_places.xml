@@ -38,8 +38,34 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+    <TextView
+        android:id="@+id/currentLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="500dp"
+        android:text="Your Current Location : " />
+
+    <TextView
+        android:id="@+id/currentaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="520dp"
+        android:text="Current Address" />
+
+    <Button
+        android:id="@+id/btnsearchplaces"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="550dp"
+        android:background="@drawable/tab_bg"
+        android:text="Click Here To Search Places"
+        />
+
 
 </FrameLayout>

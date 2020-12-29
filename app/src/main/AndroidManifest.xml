@@ -4,7 +4,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17"        />
+        android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".WeatherActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -39,11 +39,11 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".OnBoardingActivity" />
-        <activity android:name=".SplashScreenActivity"></activity>
+        <activity android:name=".SplashScreenActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
